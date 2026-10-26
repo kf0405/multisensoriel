@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ryuichi Sakamoto — Les sensations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Jost:wght@300;400&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --nuit: #15181e;
+      --encre: #1f2430;
+      --brume: #e6e4df;
+      --pluie: #8fb3c9;
+      --silence: #8b909a;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Jost", system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      background: var(--nuit);
+      color: var(--brume);
+      font-family: var(--sans);
+      font-weight: 300;
+    }
+
+    /* Conteneur horizontal : une diapo = un écran */
+    .deck {
+      display: flex;
+      height: 100%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .slide {
+      flex: 0 0 100%;
+      height: 100%;
+      scroll-snap-align: start;
+      padding: 6vh 7vw 9vh;
+      display: flex;
+      align-items: center;
+      overflow-y: auto;
+    }
+
+    h1,
+    h2 {
+      font-family: var(--serif);
+      font-weight: 300;
+      line-height: 1.05;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 7vw, 5.5rem);
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+    }
+
+    p {
+      line-height: 1.75;
+      font-size: clamp(1rem, 1.3vw, 1.15rem);
+      max-width: 52ch;
+    }
+
+    /* Diapo 1 */
+    .intro {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .intro .sous-titre {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+      color: var(--pluie);
+    }
+
+    .intro p {
+      color: #c9c7c2;
+    }
+
+    /* Diapos morceaux */
+    .morceau {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 5vw;
+    }
+
+    .image {
+      aspect-ratio: 1 / 1;
+      max-height: 70vh;
+      width: 100%;
+      background: var(--encre);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+
+    .image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image.vide {
+      border: 1px dashed var(--silence);
+      color: var(--silence);
+      font-size: .9rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .texte {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .sensation {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--pluie);
+    }
+
+    .texte p {
+      color: #c9c7c2;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 460px;
+      margin-top: .5rem;
+      color-scheme: dark;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      bottom: 2.5vh;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: .9rem;
+    }
+
+    nav button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid var(--silence);
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    nav button.actif {
+      background: var(--pluie);
+      border-color: var(--pluie);
+    }
+
+    nav button:focus-visible {
+      outline: 2px solid var(--pluie);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 760px) {
+      .morceau {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        align-content: start;
+        padding-top: 5vh;
+      }
+
+      .image {
+        max-height: 36vh;
+        aspect-ratio: 16 / 10;
+      }
+
+      .slide {
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .deck {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="deck" id="deck">
+
+    <!-- ============ DIAPO 1 : PRÉSENTATION ============ -->
+    <section class="slide intro">
+      <h1>Ryuichi Sakamoto</h1>
+      <p class="sous-titre">Écouter par les sensations</p>
+      <!-- ✏️ Modifie ce paragraphe librement -->
+      <p>
+        Ryuichi Sakamoto (1952-2023) est un compositeur, pianiste et producteur japonais né à Tokyo.
+        Cofondateur du Yellow Magic Orchestra et pionnier de la musique électronique, il a aussi signé
+        de nombreuses musiques de films, dont « Furyo » et « Le Dernier Empereur », récompensée par un Oscar.
+        Son œuvre tardive, plus dépouillée, laisse une large place au silence et au grain des sons.
+      </p>
+    </section>
+
+    <!-- ============ DIAPO 2 : MORCEAU 1 ============ -->
+    <section class="slide morceau">
+      <div class="image">
+        <!-- 🖼️ Remplace le fichier : images/morceau1.jpg -->
+        <img src="images/morceau1.jpg" alt="Image du morceau 1">
+      </div>
+      <div class="texte">
+        <h2>Titre du morceau 1</h2>
+        <span class="sensation">La sensation : …</span>
+        <!-- ✏️ Ton texte ici -->
+        <p>Écris ici ce que ce morceau te fait ressentir.</p>
+        <!-- 🎧 Remplace le fichier : audio/morceau1.mp3 -->
+        <audio controls preload="none" src="audio/morceau1.mp3"></audio>
+      </div>
+    </section>
+
+    <!-- ============ DIAPO 3 : MORCEAU 2 ============ -->
+    <section class="slide morceau">
+      <div class="image">
+        <img src="images/morceau2.jpg" alt="Image du morceau 2">
+      </div>
+      <div class="texte">
+        <h2>Titre du morceau 2</h2>
+        <span class="sensation">La sensation : …</span>
+        <p>Écris ici ce que ce morceau te fait ressentir.</p>
+        <audio controls preload="none" src="audio/morceau2.mp3"></audio>
+      </div>
+    </section>
+
+    <!-- ============ DIAPO 4 : MORCEAU 3 ============ -->
+    <section class="slide morceau">
+      <div class="image">
+        <img src="images/morceau3.jpg" alt="Image du morceau 3">
+      </div>
+      <div class="texte">
+        <h2>Titre du morceau 3</h2>
+        <span class="sensation">La sensation : …</span>
+        <p>Écris ici ce que ce morceau te fait ressentir.</p>
+        <audio controls preload="none" src="audio/morceau3.mp3"></audio>
+      </div>
+    </section>
+
+    <!-- ============ DIAPO 5 : MORCEAU 4 ============ -->
+    <section class="slide morceau">
+      <div class="image">
+        <img src="images/morceau4.jpg" alt="Image du morceau 4">
+      </div>
+      <div class="texte">
+        <h2>Titre du morceau 4</h2>
+        <span class="sensation">La sensation : …</span>
+        <p>Écris ici ce que ce morceau te fait ressentir.</p>
+        <audio controls preload="none" src="audio/morceau4.mp3"></audio>
+      </div>
+    </section>
+
+    <!-- ============ DIAPO 6 : MORCEAU 5 ============ -->
+    <section class="slide morceau">
+      <div class="image">
+        <img src="images/morceau5.jpg" alt="Image du morceau 5">
+      </div>
+      <div class="texte">
+        <h2>Titre du morceau 5</h2>
+        <span class="sensation">La sensation : …</span>
+        <p>Écris ici ce que ce morceau te fait ressentir.</p>
+        <audio controls preload="none" src="audio/morceau5.mp3"></audio>
+      </div>
+    </section>
+
+  </main>
+
+  <nav id="nav" aria-label="Navigation des diapositives"></nav>
+
+  <script>
+    const deck = document.getElementById('deck');
+    const slides = [...deck.querySelectorAll('.slide')];
+    const nav = document.getElementById('nav');
+
+    // Image manquante -> cadre pointillé avec le nom du fichier attendu
+    document.querySelectorAll('.image img').forEach(img => {
+      img.addEventListener('error', () => {
+        const box = img.parentElement;
+        box.classList.add('vide');
+        box.textContent = 'Ajoute une image : ' + img.getAttribute('src');
+      });
+    });
+
+    // Points de navigation
+    const dots = slides.map((s, i) => {
+      const b = document.createElement('button');
+      b.setAttribute('aria-label', 'Diapositive ' + (i + 1));
+      b.onclick = () => s.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+      nav.appendChild(b);
+      return b;
+    });
+
+    // Diapo active + mise en pause de l'audio quand on change de page
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const i = slides.indexOf(e.target);
+        if (e.isIntersecting) dots[i].classList.add('actif');
+        else {
+          dots[i].classList.remove('actif');
+          e.target.querySelectorAll('audio').forEach(a => a.pause());
+        }
+      });
+    }, { root: deck, threshold: 0.6 });
+    slides.forEach(s => obs.observe(s));
+
+    // Flèches du clavier
+    addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') deck.scrollBy({ left: innerWidth, behavior: 'smooth' });
+      if (e.key === 'ArrowLeft') deck.scrollBy({ left: -innerWidth, behavior: 'smooth' });
+    });
+  </script>
+</body>
+
+</html>
