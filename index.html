@@ -76,9 +76,14 @@
 
     /* Diapo 1 */
     .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+      gap: 5vw;
+    }
+
+    .intro-texte {
+      display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
       gap: 2rem;
     }
 
@@ -149,6 +154,53 @@
       color-scheme: dark;
     }
 
+    /* Diapo références */
+    .references {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .refs-contenu {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .liste-refs {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .liste-refs li {
+      border-left: 1px solid var(--pluie);
+      padding-left: 1.5rem;
+    }
+
+    .liste-refs h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.6rem;
+      margin-bottom: .3rem;
+    }
+
+    .liste-refs p {
+      color: #c9c7c2;
+    }
+
+    .titre-morceau {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-top: .8rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--silence);
+    }
+
     /* Navigation */
     nav {
       position: fixed;
@@ -181,6 +233,8 @@
     }
 
     @media (max-width: 760px) {
+
+      .intro,
       .morceau {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -212,82 +266,88 @@
 
     <!-- ============ DIAPO 1 : PRÉSENTATION ============ -->
     <section class="slide intro">
-      <h1>Ryuichi Sakamoto</h1>
-      <p class="sous-titre">Écouter par les sensations</p>
-      <!-- ✏️ Modifie ce paragraphe librement -->
-      <p>
-        Ryuichi Sakamoto (1952-2023) est un compositeur, pianiste et producteur japonais né à Tokyo.
-        Cofondateur du Yellow Magic Orchestra et pionnier de la musique électronique, il a aussi signé
-        de nombreuses musiques de films, dont « Furyo » et « Le Dernier Empereur », récompensée par un Oscar.
-        Son œuvre tardive, plus dépouillée, laisse une large place au silence et au grain des sons.
-      </p>
-    </section>
-
-    <!-- ============ DIAPO 2 : MORCEAU 1 ============ -->
-    <section class="slide morceau">
-      <div class="image">
-        <!-- 🖼️ Remplace le fichier : images/morceau1.jpg -->
-        <img src="images/morceau1.jpg" alt="Image du morceau 1">
+      <div class="intro-texte">
+        <h1>Ryuichi Sakamoto</h1>
+        <p class="sous-titre">Écouter par les sensations</p>
+        <!-- ✏️ Modifie ce paragraphe librement -->
+        <p>
+          Ryuichi Sakamoto (1952-2023) est un compositeur, pianiste, producteur et acteur japonais né à Tokyo.
+          Cofondateur du Yellow Magic Orchestra et pionnier de la musique électronique, il a aussi signé
+          de nombreuses musiques de films, dont « Furyo » et « Le Dernier Empereur », récompensée par un Oscar.
+          Dans son œuvre tardive, il explore la musique ambient. Ce n'est pas une musique d'ascenseur : elle se
+          concentre sur les timbres et les textures plutôt que sur les mélodies, et laisse une large place
+          au silence et au grain des sons.
+        </p>
       </div>
-      <div class="texte">
-        <h2>Titre du morceau 1</h2>
-        <span class="sensation">La sensation : …</span>
-        <!-- ✏️ Ton texte ici -->
-        <p>Écris ici ce que ce morceau te fait ressentir.</p>
-        <!-- 🎧 Remplace le fichier : audio/morceau1.mp3 -->
-        <audio controls preload="none" src="audio/morceau1.mp3"></audio>
+      <div class="image">
+        <!-- 🖼️ Remplace le fichier : images/sakamoto.jpg -->
+        <img src="images/sakamoto.jpg" alt="Portrait de Ryuichi Sakamoto">
       </div>
     </section>
 
-    <!-- ============ DIAPO 3 : MORCEAU 2 ============ -->
+    <!-- ============ DIAPO 2 : L'ALBUM ET LE MORCEAU ============ -->
     <section class="slide morceau">
       <div class="image">
-        <img src="images/morceau2.jpg" alt="Image du morceau 2">
+        <!-- 🖼️ Pochette de l'album : images/album.jpg -->
+        <img src="images/album.jpg" alt="Pochette de l'album">
       </div>
       <div class="texte">
-        <h2>Titre du morceau 2</h2>
-        <span class="sensation">La sensation : …</span>
-        <p>Écris ici ce que ce morceau te fait ressentir.</p>
-        <audio controls preload="none" src="audio/morceau2.mp3"></audio>
+        <h2>async</h2>
+        <span class="sensation">Année · Label</span>
+        <!-- ✏️ Parle de l'album -->
+        <p>async est son premier album solo en huit ans, et le premier depuis son cancer, diagnostiqué en 2014. Beaucoup
+          de critiques entendent l’album comme un regard sur sa carrière et sur la mortalité.</p>
+        <h3 class="titre-morceau">ubi</h3>
+        <!-- ✏️ Parle du morceau -->
+        <p> Dans ubi, il y a un son qui ressemble à un ping de sonar, déformé, posé contre un piano plaintif.
+          C’est la rencontre de l’acoustique (Chopin, Jobim) et de l’électronique (son passé avec le Yellow Magic
+          Orchestra).</p>
       </div>
     </section>
 
-    <!-- ============ DIAPO 4 : MORCEAU 3 ============ -->
-    <section class="slide morceau">
-      <div class="image">
-        <img src="images/morceau3.jpg" alt="Image du morceau 3">
-      </div>
-      <div class="texte">
-        <h2>Titre du morceau 3</h2>
-        <span class="sensation">La sensation : …</span>
-        <p>Écris ici ce que ce morceau te fait ressentir.</p>
-        <audio controls preload="none" src="audio/morceau3.mp3"></audio>
+    <!-- ============ DIAPO 3 : LES RÉFÉRENCES POSSIBLES ============ -->
+    <section class="slide references">
+      <div class="refs-contenu">
+        <h2>Références possibles</h2>
+        <!-- ✏️ Duplique un bloc <li> pour ajouter une référence -->
+        <ul class="liste-refs">
+          <li>
+            <h3>Chopin et Jobim</h3>
+            <p>Une même famille, une même maison. Le Prélude en mi mineur de Chopin (1839) est une mélodie qui descend
+              lentement, soutenue par des accords qui glissent d’un à l’autre. Cette idée traverse le temps : Antonio
+              Carlos Jobim la reprend dans Insensatez (1963), puis Ryuichi Sakamoto dans ubi (2017). Quand Sakamoto rend
+              visite à Jobim à Rio, il découvre sur le piano de nombreuses partitions de Chopin et de Debussy. Selon son
+              souvenir, l’épouse de Jobim lui dit alors : « Vous faites partie de la même famille. » Trois compositeurs,
+              trois époques, une seule casa. Chopin possédait un exemplaire du Clavier bien tempéré de Bach. Son opus
+              28, dont fait partie ce prélude, reprend la même idée : un cycle complet de préludes dans toutes les
+              tonalités majeures et mineures, mais dans un ordre différent de celui de Bach.</p>
+          </li>
+          <li>
+            <h3>Ubik</h3>
+            <p> Le titre de la chanson est peut-être une référence au livre Ubik de Philip K. Dick (auteur de
+              science-fiction), une œuvre qui raconte une histoire dans le futur sur un produit en spray qui stabilise
+              la réalité et stoppe sa dégradation. </p>
+          </li>
+          <li>
+            <h3>Ubi : « où ? »</h3>
+            <p>En latin, <em>ubi</em> signifie « où ». Le mot évoque le thème médiéval de l'<em>ubi sunt</em> (« où sont
+              ceux qui ne sont plus ? »), une méditation sur le temps qui passe et sur la disparition. Il est aussi
+              proche de <em>ubique</em>, « partout », dont dérive le titre du roman <em>Ubik</em>.</p>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <!-- ============ DIAPO 5 : MORCEAU 4 ============ -->
-    <section class="slide morceau">
-      <div class="image">
-        <img src="images/morceau4.jpg" alt="Image du morceau 4">
-      </div>
-      <div class="texte">
-        <h2>Titre du morceau 4</h2>
-        <span class="sensation">La sensation : …</span>
-        <p>Écris ici ce que ce morceau te fait ressentir.</p>
-        <audio controls preload="none" src="audio/morceau4.mp3"></audio>
-      </div>
-    </section>
-
-    <!-- ============ DIAPO 6 : MORCEAU 5 ============ -->
-    <section class="slide morceau">
-      <div class="image">
-        <img src="images/morceau5.jpg" alt="Image du morceau 5">
-      </div>
-      <div class="texte">
-        <h2>Titre du morceau 5</h2>
-        <span class="sensation">La sensation : …</span>
-        <p>Écris ici ce que ce morceau te fait ressentir.</p>
-        <audio controls preload="none" src="audio/morceau5.mp3"></audio>
+    <!-- ============ DIAPO 4 : ÉCOUTE DU MORCEAU ============ -->
+    <section class="slide ecoute">
+      <div class="ecoute-contenu">
+        <h2>ubi</h2>
+        <!-- 🎥 Remplace VIDEO_ID par l'identifiant de ta vidéo YouTube -->
+        <div class="video">
+          <iframe src="https://www.youtube-nocookie.com/embed/IG2zzxYMqDo?enablejsapi=1&rel=0"
+            title="ubi, Ryuichi Sakamoto" allow="encrypted-media; picture-in-picture" allowfullscreen
+            loading="lazy"></iframe>
+        </div>
       </div>
     </section>
 
