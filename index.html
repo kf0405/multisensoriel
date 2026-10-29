@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ryuichi Sakamoto — Les sensations</title>
+  <title>L'ambient — Écouter par les sensations</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Jost:wght@300;400&display=swap"
@@ -34,7 +34,6 @@
       font-weight: 300;
     }
 
-    /* Conteneur horizontal : une diapo = un écran */
     .deck {
       display: flex;
       height: 100%;
@@ -68,137 +67,106 @@
       font-size: clamp(2rem, 4.5vw, 3.4rem);
     }
 
+    h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.5rem;
+      margin-bottom: .4rem;
+    }
+
     p {
       line-height: 1.75;
       font-size: clamp(1rem, 1.3vw, 1.15rem);
-      max-width: 52ch;
-    }
-
-    /* Diapo 1 */
-    .intro {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
-      gap: 5vw;
-    }
-
-    .intro-texte {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .intro .sous-titre {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: clamp(1.2rem, 2.2vw, 1.7rem);
-      color: var(--pluie);
-    }
-
-    .intro p {
+      max-width: 56ch;
       color: #c9c7c2;
     }
 
-    /* Diapos morceaux */
+    .sous-titre,
+    .sensation {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+      color: var(--pluie);
+    }
+
+    /* Colonne de contenu centrée (diapos 1, 2, 3) */
+    .colonne {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contenu {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    /* Diapo 1 : comparaison */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: .5rem;
+    }
+
+    .compare>div {
+      border-top: 1px solid var(--silence);
+      padding-top: 1rem;
+    }
+
+    .compare>div:last-child {
+      border-color: var(--pluie);
+    }
+
+    /* Listes à filet (diapos 2 et 3) */
+    .liste {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .liste li {
+      border-left: 1px solid var(--pluie);
+      padding-left: 1.5rem;
+    }
+
+    /* Diapos morceaux : texte à gauche, vidéo à droite */
     .morceau {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
       gap: 5vw;
-    }
-
-    .image {
-      aspect-ratio: 1 / 1;
-      max-height: 70vh;
-      width: 100%;
-      background: var(--encre);
-      overflow: hidden;
-      display: grid;
-      place-items: center;
-    }
-
-    .image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .image.vide {
-      border: 1px dashed var(--silence);
-      color: var(--silence);
-      font-size: .9rem;
-      text-align: center;
-      padding: 1rem;
     }
 
     .texte {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.2rem;
     }
 
-    .sensation {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 1.4rem;
-      color: var(--pluie);
+    .artiste {
+      color: var(--silence);
+      font-size: .95rem;
+      letter-spacing: .05em;
     }
 
-    .texte p {
-      color: #c9c7c2;
-    }
-
-    audio {
+    .video {
+      position: relative;
       width: 100%;
-      max-width: 460px;
-      margin-top: .5rem;
-      color-scheme: dark;
+      aspect-ratio: 16 / 9;
+      max-height: 62vh;
+      background: var(--encre);
     }
 
-    /* Diapo références */
-    .references {
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .refs-contenu {
+    .video iframe {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      max-width: 900px;
-      display: flex;
-      flex-direction: column;
-      gap: 2.5rem;
-    }
-
-    .liste-refs {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1.8rem;
-    }
-
-    .liste-refs li {
-      border-left: 1px solid var(--pluie);
-      padding-left: 1.5rem;
-    }
-
-    .liste-refs h3 {
-      font-family: var(--serif);
-      font-weight: 500;
-      font-size: 1.6rem;
-      margin-bottom: .3rem;
-    }
-
-    .liste-refs p {
-      color: #c9c7c2;
-    }
-
-    .titre-morceau {
-      font-family: var(--serif);
-      font-weight: 500;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      margin-top: .8rem;
-      padding-top: 1.2rem;
-      border-top: 1px solid var(--silence);
+      height: 100%;
+      border: 0;
     }
 
     /* Navigation */
@@ -234,17 +202,15 @@
 
     @media (max-width: 760px) {
 
-      .intro,
+      .compare,
       .morceau {
         grid-template-columns: 1fr;
         gap: 1.5rem;
-        align-content: start;
-        padding-top: 5vh;
       }
 
-      .image {
-        max-height: 36vh;
-        aspect-ratio: 16 / 10;
+      .morceau {
+        align-content: start;
+        padding-top: 5vh;
       }
 
       .slide {
@@ -264,90 +230,100 @@
 
   <main class="deck" id="deck">
 
-    <!-- ============ DIAPO 1 : PRÉSENTATION ============ -->
-    <section class="slide intro">
-      <div class="intro-texte">
-        <h1>Ryuichi Sakamoto</h1>
+    <!-- ============ DIAPO 1 : L'AMBIENT N'EST PAS DU MUZAK ============ -->
+    <section class="slide colonne">
+      <div class="contenu">
+        <h1>L'ambient</h1>
         <p class="sous-titre">Écouter par les sensations</p>
-        <!-- ✏️ Modifie ce paragraphe librement -->
+        <!-- ✏️ Modifie librement -->
         <p>
-          Ryuichi Sakamoto (1952-2023) est un compositeur, pianiste, producteur et acteur japonais né à Tokyo.
-          Cofondateur du Yellow Magic Orchestra et pionnier de la musique électronique, il a aussi signé
-          de nombreuses musiques de films, dont « Furyo » et « Le Dernier Empereur », récompensée par un Oscar.
-          Dans son œuvre tardive, il explore la musique ambient. Ce n'est pas une musique d'ascenseur : elle se
-          concentre sur les timbres et les textures plutôt que sur les mélodies, et laisse une large place
-          au silence et au grain des sons.
+          En français, on dit <em>ambient</em>, pas « musique d'ambiance ». Ce n'est surtout pas de la musique
+          d'ascenseur : elle se concentre sur les timbres et les textures plutôt que sur les mélodies.
         </p>
-      </div>
-      <div class="image">
-        <!-- 🖼️ Remplace le fichier : images/sakamoto.jpg -->
-        <img src="images/sakamoto.jpg" alt="Portrait de Ryuichi Sakamoto">
-      </div>
-    </section>
-
-    <!-- ============ DIAPO 2 : L'ALBUM ET LE MORCEAU ============ -->
-    <section class="slide morceau">
-      <div class="image">
-        <!-- 🖼️ Pochette de l'album : images/album.jpg -->
-        <img src="images/album.jpg" alt="Pochette de l'album">
-      </div>
-      <div class="texte">
-        <h2>async</h2>
-        <span class="sensation">Année · Label</span>
-        <!-- ✏️ Parle de l'album -->
-        <p>async est son premier album solo en huit ans, et le premier depuis son cancer, diagnostiqué en 2014. Beaucoup
-          de critiques entendent l’album comme un regard sur sa carrière et sur la mortalité.</p>
-        <h3 class="titre-morceau">ubi</h3>
-        <!-- ✏️ Parle du morceau -->
-        <p> Dans ubi, il y a un son qui ressemble à un ping de sonar, déformé, posé contre un piano plaintif.
-          C’est la rencontre de l’acoustique (Chopin, Jobim) et de l’électronique (son passé avec le Yellow Magic
-          Orchestra).</p>
+        <div class="compare">
+          <div>
+            <h3>Muzak, musique d'ascenseur</h3>
+            <p>Conçue pour ne pas être remarquée. Elle lisse l'atmosphère d'un lieu avec des mélodies familières.</p>
+          </div>
+          <div>
+            <h3>Ambient</h3>
+            <p>On peut l'ignorer, mais elle récompense l'attention. Elle ouvre un espace pour ressentir.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ============ DIAPO 3 : LES RÉFÉRENCES POSSIBLES ============ -->
-    <section class="slide references">
-      <div class="refs-contenu">
-        <h2>Références possibles</h2>
-        <!-- ✏️ Duplique un bloc <li> pour ajouter une référence -->
-        <ul class="liste-refs">
+    <!-- ============ DIAPO 2 : LES CARACTÉRISTIQUES DU GENRE ============ -->
+    <section class="slide colonne">
+      <div class="contenu">
+        <h2>Ce qui fait l'ambient</h2>
+        <!-- ✏️ Duplique un <li> pour ajouter une caractéristique -->
+        <ul class="liste">
           <li>
-            <h3>Chopin et Jobim</h3>
-            <p>Une même famille, une même maison. Le Prélude en mi mineur de Chopin (1839) est une mélodie qui descend
-              lentement, soutenue par des accords qui glissent d’un à l’autre. Cette idée traverse le temps : Antonio
-              Carlos Jobim la reprend dans Insensatez (1963), puis Ryuichi Sakamoto dans ubi (2017). Quand Sakamoto rend
-              visite à Jobim à Rio, il découvre sur le piano de nombreuses partitions de Chopin et de Debussy. Selon son
-              souvenir, l’épouse de Jobim lui dit alors : « Vous faites partie de la même famille. » Trois compositeurs,
-              trois époques, une seule casa. Chopin possédait un exemplaire du Clavier bien tempéré de Bach. Son opus
-              28, dont fait partie ce prélude, reprend la même idée : un cycle complet de préludes dans toutes les
-              tonalités majeures et mineures, mais dans un ordre différent de celui de Bach.</p>
+            <h3>Le timbre avant la mélodie</h3>
+            <p>La couleur d'un son compte plus que la phrase musicale.</p>
           </li>
           <li>
-            <h3>Ubik</h3>
-            <p> Le titre de la chanson est peut-être une référence au livre Ubik de Philip K. Dick (auteur de
-              science-fiction), une œuvre qui raconte une histoire dans le futur sur un produit en spray qui stabilise
-              la réalité et stoppe sa dégradation. </p>
+            <h3>Un temps étiré</h3>
+            <p>Peu de rythme marqué, des sons longs, de la répétition et de la réverbération.</p>
           </li>
           <li>
-            <h3>Ubi : « où ? »</h3>
-            <p>En latin, <em>ubi</em> signifie « où ». Le mot évoque le thème médiéval de l'<em>ubi sunt</em> (« où sont
-              ceux qui ne sont plus ? »), une méditation sur le temps qui passe et sur la disparition. Il est aussi
-              proche de <em>ubique</em>, « partout », dont dérive le titre du roman <em>Ubik</em>.</p>
+            <h3>Le silence et l'espace</h3>
+            <p>Ce qui n'est pas joué fait partie de la musique.</p>
           </li>
         </ul>
       </div>
     </section>
 
-    <!-- ============ DIAPO 4 : ÉCOUTE DU MORCEAU ============ -->
-    <section class="slide ecoute">
-      <div class="ecoute-contenu">
-        <h2>ubi</h2>
-        <!-- 🎥 Remplace VIDEO_ID par l'identifiant de ta vidéo YouTube -->
-        <div class="video">
-          <iframe src="https://www.youtube-nocookie.com/embed/IG2zzxYMqDo?enablejsapi=1&rel=0"
-            title="ubi, Ryuichi Sakamoto" allow="encrypted-media; picture-in-picture" allowfullscreen
-            loading="lazy"></iframe>
-        </div>
+
+    <!-- ============ DIAPO 4 : MORCEAU (Brian Eno) ============ -->
+    <section class="slide morceau">
+      <div class="texte">
+        <h2>1/1</h2>
+        <span class="artiste">Brian Eno · <em>Ambient 1: Music for Airports</em> · 1978</span>
+        <!-- ✏️ Ton texte sur le morceau -->
+        <p>De courtes phrases de piano reviennent en boucles de longueurs différentes. Elles se décalent peu à peu, et
+          l'ensemble évolue sans jamais « avancer ».</p>
+      </div>
+      <!-- 🎥 Remplace VIDEO_ID par l'identifiant YouTube (après v= dans le lien) -->
+      <div class="video">
+        <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID?enablejsapi=1&rel=0" title="Brian Eno, 1/1"
+          allow="encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- ============ DIAPO 5 : AUTRE MORCEAU (modèle à dupliquer) ============ -->
+    <section class="slide morceau">
+      <div class="texte">
+        <span class="artiste">Fennesz &amp; Ryuichi Sakamoto · <em>Cendre</em> · 2007</span>
+        <p>Dans <em>Haru</em> (« printemps » en japonais), le piano de Sakamoto pose quelques notes espacées, et la
+          guitare et l'électronique de Fennesz les enveloppent d'un voile de textures, de grain et de réverbération.
+          Aucune phrase ne cherche à nous retenir : c'est le timbre et le silence entre les notes qui comptent. C'est un
+          très bon exemple de la rencontre entre un instrument acoustique et l'électronique, l'une des directions de
+          l'ambient.</p>
+      </div>
+      <div class="video">
+        <iframe src="https://www.youtube-nocookie.com/embed/cvy4A9PwSnw?enablejsapi=1&rel=0"
+          title="Fennesz Sakamoto Haru" allow="encrypted-media; picture-in-picture" allowfullscreen
+          loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- ============ DIAPO 6 : AUTRE MORCEAU (modèle à dupliquer) ============ -->
+    <section class="slide morceau">
+      <div class="texte">
+        <h2>Chrome Country</h2>
+        <span class="artiste">Oneohtrix Point Never · <em>R Plus Seven</em> · 2013</span>
+        <p>Sur <em>Chrome Country</em>, Daniel Lopatin travaille avec des sons synthétiques, proches des instruments
+          MIDI et des presets de synthétiseurs des années 1980. Des motifs de piano rappellent le minimalisme américain
+          de Steve Reich, mais leur timbre artificiel, un peu brillant, déplace l'écoute : on ne suit pas une mélodie,
+          on se laisse envelopper par une matière sonore numérique. L'ambient devient ici un paysage, à la fois familier
+          et étrange.</p>
+      </div>
+      <div class="video">
+        <iframe src="https://www.youtube-nocookie.com/embed/c5u7IYJBdc0?enablejsapi=1&rel=0"
+          title="Chrome Country (KCRW Session)" allow="encrypted-media; picture-in-picture" allowfullscreen
+          loading="lazy"></iframe>
       </div>
     </section>
 
@@ -360,16 +336,6 @@
     const slides = [...deck.querySelectorAll('.slide')];
     const nav = document.getElementById('nav');
 
-    // Image manquante -> cadre pointillé avec le nom du fichier attendu
-    document.querySelectorAll('.image img').forEach(img => {
-      img.addEventListener('error', () => {
-        const box = img.parentElement;
-        box.classList.add('vide');
-        box.textContent = 'Ajoute une image : ' + img.getAttribute('src');
-      });
-    });
-
-    // Points de navigation
     const dots = slides.map((s, i) => {
       const b = document.createElement('button');
       b.setAttribute('aria-label', 'Diapositive ' + (i + 1));
@@ -378,20 +344,20 @@
       return b;
     });
 
-    // Diapo active + mise en pause de l'audio quand on change de page
+    // Diapo active + pause de la vidéo quand on change de page
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => {
         const i = slides.indexOf(e.target);
         if (e.isIntersecting) dots[i].classList.add('actif');
         else {
           dots[i].classList.remove('actif');
-          e.target.querySelectorAll('audio').forEach(a => a.pause());
+          e.target.querySelectorAll('iframe').forEach(f =>
+            f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }), '*'));
         }
       });
     }, { root: deck, threshold: 0.6 });
     slides.forEach(s => obs.observe(s));
 
-    // Flèches du clavier
     addEventListener('keydown', e => {
       if (e.key === 'ArrowRight') deck.scrollBy({ left: innerWidth, behavior: 'smooth' });
       if (e.key === 'ArrowLeft') deck.scrollBy({ left: -innerWidth, behavior: 'smooth' });
